@@ -13,7 +13,9 @@ The world map uses a toroidal space (like in a Snake game, if you go beyond the 
 
 ## Installation
 1. make sure you have installed [raylib](https://github.com/raysan5/raylib) installed somewhere on you machine
-2. ```bash
+2. 
+```bash
     make build  # skippable step
     make run    # you can directly execute this step
 ```
+
