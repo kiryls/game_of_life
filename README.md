@@ -15,7 +15,18 @@ The world map uses a toroidal space (like in a Snake game, if you go beyond the 
 1. make sure you have installed [raylib](https://github.com/raysan5/raylib) installed somewhere on you machine
 2. build & run:
 ```bash
-    make build  # skippable step
-    make run    # you can directly execute this step
+    make
+    make run
 ```
+
+## List of Parameters
+in `./src/game_of_life.c`:
+* `CYCLE_SPEED`: simulation FPS
+
+in `./src/world/world.h`:
+* `SCREEN_W`: screen width in pixels
+* `SCREEN_H`: screen height in pixels
+* `CELL_SIZE`: size of a single cell in pixels
+* `ROWS`: cells in a row (`SCREEN_H / CELL_SIZE`)
+* `COLS`: cells in a column (`SCREEN_W / CELL_SIZE`)
 
