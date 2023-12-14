@@ -3,6 +3,8 @@
 
 #include "../world/world.h"
 
+void FillPercentage(World *world, int percentage);
+
 void AddBlinker(World *world, int r, int c);
 void AddGlider(World *world, int r, int c);
 

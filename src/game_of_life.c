@@ -44,8 +44,9 @@ int main(int argc, char *argv[]) {
 
     World world = InitWorld();
 
-    AddBlinker(&world, 1, 2);
-    AddGlider(&world, ROWS-5, COLS-4);
+    // AddBlinker(&world, 1, 2);
+    // AddGlider(&world, ROWS-5, COLS-4);
+    FillPercentage(&world, 33);
 
     InitWindow(SCREEN_W, SCREEN_H, "Game of Life");
 

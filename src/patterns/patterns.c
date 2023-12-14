@@ -1,5 +1,13 @@
 #include "patterns.h"
+#include <stdlib.h>
 
+void FillPercentage(World *world, int percentage) {
+    for (int i = 0; i < world->rows; ++i) {
+        for (int j = 0; j < world->cols; ++j) {
+            world->map[i][j].front = arc4random() % 100 < percentage;
+        }
+    }
+}
 
 void AddBlinker(World *world, int r, int c) {
     //      Blinker
