@@ -18,6 +18,7 @@ typedef struct {
 typedef struct {
     Cell map[ROWS][COLS];
     bool flip_side;
+    int rows, cols;
 } World;
 
 World InitWorld();

@@ -11,6 +11,8 @@ World InitWorld() {
     }
 
     world.flip_side = false;
+    world.rows = ROWS;
+    world.cols = COLS;
 
    return world;
 }
