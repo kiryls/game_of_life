@@ -2,23 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "include/raylib.h"
+#include "world/world.h"
+#include "patterns/patterns.h"
 
-#define SCREEN_W 400
-#define SCREEN_H 400 
-#define CELL_SIZE 20 
-#define ROWS (SCREEN_H/CELL_SIZE)
-#define COLS (SCREEN_W/CELL_SIZE)
-
-typedef struct {
-    Vector2 pos;
-    bool front;
-    bool back;
-} Cell;
-
-typedef struct {
-    Cell map[ROWS][COLS];
-    bool flip_side;
-} World;
+#define CYCLE_SPEED 8
 
 int RoundRow(int index) {
     return index >= 0 ? index % ROWS : ROWS + index;
@@ -53,57 +40,16 @@ bool CheckSurroundings(World *world, int r, int c) {
     return count_alive == 3 || (count_alive == 2 && im_alive);
 }
 
-void AddBlinker(World *world, int r, int c) {
-    //      Blinker
-    //         
-    //        X  
-    //        X  
-    //        X  
-    //
-    world->map[r+0][c+0].front = true;
-    world->map[r+1][c+0].front = true;
-    world->map[r+2][c+0].front = true;
-}
-
-void AddGlider(World *world, int r, int c) {
-    //      Glider
-    //
-    //      X X X
-    //      X    
-    //        X  
-    //
-    world->map[r+0][c+0].front = true;
-    world->map[r+0][c+1].front = true;
-    world->map[r+0][c+2].front = true;
-    world->map[r+1][c+0].front = true;
-    world->map[r+2][c+1].front = true;
-}
-
-World InitWorld() {
-    World world;
-    
-    for (int i = 0; i < ROWS; ++i) {
-        for (int j = 0; j < COLS; ++j) {
-            Cell c = {.pos = {.x = j * CELL_SIZE, .y = i * CELL_SIZE}, .front = false, .back = false};
-            world.map[i][j] = c;
-        }
-    }
-
-    world.flip_side = false;
-
-    AddBlinker(&world, 1, 2);
-    AddGlider(&world, ROWS-5, COLS-4);
-
-    return world;
-}
-
 int main(int argc, char *argv[]) { 
 
     World world = InitWorld();
 
+    AddBlinker(&world, 1, 2);
+    AddGlider(&world, ROWS-5, COLS-4);
+
     InitWindow(SCREEN_W, SCREEN_H, "Game of Life");
 
-    SetTargetFPS(4); // MEMO create a simulation speed param
+    SetTargetFPS(CYCLE_SPEED);
 
     while (!WindowShouldClose()) {
         BeginDrawing(); 
