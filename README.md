@@ -13,10 +13,18 @@ The world map uses a toroidal space (like in a Snake game, if you go beyond the 
 
 ## Installation
 1. make sure you have installed [raylib](https://github.com/raysan5/raylib) installed somewhere on you machine
-2. build & run:
+2. clone this repo into `<your-project-folder>`:
 ```bash
-    make
-    make run
+    $ git clone https://github.com/kiryls/game_of_life.git <your-project-folder>
+```
+3. cd into `<your-project-folder>`:
+```bash
+    $ cd <your-project-folder>
+```
+4. from there, build & run:
+```bash
+    $ make
+    $ make run
 ```
 
 ## List of Parameters
