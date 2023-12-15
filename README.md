@@ -12,7 +12,7 @@ This is just a simple implementation of [Conway's Game of Life](https://en.wikip
 The world map uses a toroidal space (like in a Snake game, if you go beyond the right border you reappear on the left side, beyond the top side and you reappear from the bottom)
 
 ## Installation
-1. make sure you have installed [raylib](https://github.com/raysan5/raylib) installed somewhere on you machine
+1. make sure you have [raylib](https://github.com/raysan5/raylib) installed somewhere on you machine
 2. clone this repo into `<your-project-folder>`:
 ```bash
     $ git clone https://github.com/kiryls/game_of_life.git <your-project-folder>
