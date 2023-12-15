@@ -44,7 +44,19 @@ int main(int argc, char *argv[]) {
 
     SetTargetFPS(CYCLE_SPEED);
 
+    bool paused = false;
+
     while (!WindowShouldClose()) {
+
+        if(IsKeyPressed(KEY_SPACE)) {
+            if(!paused) {
+                printf("INFO: SIMULATION PAUSED\n");
+            } else {
+                printf("INFO: SIMULATION RESUMED\n");
+            }
+            paused = !paused;
+        }
+
         BeginDrawing(); 
 
         ClearBackground(RAYWHITE);
@@ -62,7 +74,9 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        world.flip_side = !world.flip_side;
+        if(!paused) {
+            world.flip_side = !world.flip_side;
+        }
 
         EndDrawing();
     }
