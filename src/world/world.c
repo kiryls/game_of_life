@@ -1,5 +1,13 @@
 #include "world.h"
 
+int RoundRow(int index) {
+    return index >= 0 ? index % ROWS : ROWS + index;
+}
+
+int RoundCol(int index) {
+    return index >= 0 ? index % COLS : COLS + index;
+}
+
 World InitWorld() {
     World world;
     

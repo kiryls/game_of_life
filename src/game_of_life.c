@@ -4,16 +4,9 @@
 #include "include/raylib.h"
 #include "world/world.h"
 #include "patterns/patterns.h"
+#include "patterns/catalog.h"
 
 #define CYCLE_SPEED 8
-
-int RoundRow(int index) {
-    return index >= 0 ? index % ROWS : ROWS + index;
-}
-
-int RoundCol(int index) {
-    return index >= 0 ? index % COLS : COLS + index;
-}
 
 bool CheckSurroundings(World *world, int r, int c) {
     Cell cell = world->map[r][c];
@@ -44,9 +37,8 @@ int main(int argc, char *argv[]) {
 
     World world = InitWorld();
 
-    // AddBlinker(&world, 1, 2);
-    // AddGlider(&world, ROWS-5, COLS-4);
-    FillPercentage(&world, 33);
+    // FillPercentage(&world, 33);
+    DrawPattern(&world, ROWS/2 - 6, COLS/2 - 7, Pulsar());
 
     InitWindow(SCREEN_W, SCREEN_H, "Game of Life");
 

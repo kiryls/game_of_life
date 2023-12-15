@@ -21,6 +21,8 @@ typedef struct {
     int rows, cols;
 } World;
 
+int RoundRow(int index);
+int RoundCol(int index);
 World InitWorld();
 
 #endif // !WORLD_H
