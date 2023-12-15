@@ -26,6 +26,13 @@ The world map uses a toroidal space (like in a Snake game, if you go beyond the 
     $ make
     $ make run
 ```
+## Roadmap
+- [x] bare bones implementation w/ randomly filled cells
+- [x] split project into modules
+- [x] implementing a catalog of patterns
+- [x] spacebar pauses/resumes the simulation
+- [ ] N/Enter keys move to the next state during a pause
+- [ ] variant: probabilistic rules
 
 ## List of Parameters
 in `./src/game_of_life.c`:
