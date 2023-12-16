@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     World world = InitWorld();
 
     // FillPercentage(&world, 33);
-    DrawPattern(&world, ROWS/2 - 6, COLS/2 - 7, Pulsar());
+    DrawPattern(&world, 0, 0, Glider());
 
     InitWindow(SCREEN_W, SCREEN_H, "Game of Life");
 
@@ -75,6 +75,10 @@ int main(int argc, char *argv[]) {
         }
 
         if(!paused) {
+            world.flip_side = !world.flip_side;
+        }
+
+        if(IsKeyPressed(KEY_ENTER) && paused) {
             world.flip_side = !world.flip_side;
         }
 
