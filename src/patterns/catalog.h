@@ -38,6 +38,9 @@ Pattern MiddleweightSpaceship();
 Pattern HeavyweightSpaceship();
 
 
+Pattern GosperGliderGun();
+
+
 void DrawPattern(World *world, int row, int col, Pattern pattern);
 
 #endif // !CATALOG_H
