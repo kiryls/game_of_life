@@ -5,7 +5,7 @@
 
 #define SCREEN_W 400
 #define SCREEN_H 400 
-#define CELL_SIZE 20 
+#define CELL_SIZE 10 
 #define ROWS (SCREEN_H/CELL_SIZE)
 #define COLS (SCREEN_W/CELL_SIZE)
 
