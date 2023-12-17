@@ -33,7 +33,7 @@ The world map uses a toroidal space (like in a Snake game, if you go beyond the 
 - [x] spacebar pauses/resumes the simulation
 - [x] Enter key moves to the next state during a pause
 - [x] variant: probabilistic rules
-- [ ] draw w/ mouse during pause
+- [x] draw w/ mouse during pause
 
 ## List of Parameters
 in `./src/game_of_life.c`:
