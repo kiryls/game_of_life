@@ -1,5 +1,13 @@
 #include "world.h"
 
+int GetRowIndex(float y) {
+    return (int)(y / CELL_SIZE);
+}
+
+int GetColIndex(float x) {
+    return (int)(x / CELL_SIZE);
+}
+
 int RoundRow(int index) {
     return index >= 0 ? index % ROWS : ROWS + index;
 }

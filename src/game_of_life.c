@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -64,12 +65,13 @@ bool CheckSurroundings(World *world, int r, int c) {
 int main(int argc, char *argv[]) { 
 
     World world = InitWorld();
+    char title[24] = "Game of Life"; 
 
     // FillPercentage(&world, 33);
     // DrawPattern(&world, ROWS/2, COLS/2, Glider());
     DrawPattern(&world, 1, 1, GosperGliderGun());
 
-    InitWindow(SCREEN_W, SCREEN_H, "Game of Life");
+    InitWindow(SCREEN_W, SCREEN_H, title);
 
     SetTargetFPS(CYCLE_SPEED);
 
@@ -80,8 +82,10 @@ int main(int argc, char *argv[]) {
         if(IsKeyPressed(KEY_SPACE)) {
             if(!paused) {
                 printf("INFO: SIMULATION PAUSED\n");
+                SetWindowTitle("Game of Life (PAUSED)");
             } else {
                 printf("INFO: SIMULATION RESUMED\n");
+                SetWindowTitle("Game of Life");
             }
             paused = !paused;
         }
@@ -96,11 +100,9 @@ int main(int argc, char *argv[]) {
                 if(world.flip_side) {
                     DrawRectangleV(c.pos, (Vector2){.x = CELL_SIZE, .y = CELL_SIZE}, c.back ? DARKGRAY : RAYWHITE);
                     world.map[i][j].front = CheckSurroundings(&world, i, j);
-                    // world.map[i][j].front = CheckSurroundingsWithProbabilities(&world, i, j);
                 } else {
                     DrawRectangleV(c.pos, (Vector2){.x = CELL_SIZE, .y = CELL_SIZE}, c.front ? DARKGRAY : RAYWHITE);
                     world.map[i][j].back = CheckSurroundings(&world, i, j);
-                    // world.map[i][j].back = CheckSurroundingsWithProbabilities(&world, i, j);
                 }
             }
         }
@@ -109,8 +111,35 @@ int main(int argc, char *argv[]) {
             world.flip_side = !world.flip_side;
         }
 
-        if(IsKeyPressed(KEY_ENTER) && paused) {
-            world.flip_side = !world.flip_side;
+        if (paused) {
+            Vector2 pointer = GetMousePosition();
+            DrawRectangle(
+                floor(pointer.x / CELL_SIZE) * CELL_SIZE, 
+                floor(pointer.y / CELL_SIZE) * CELL_SIZE, 
+                CELL_SIZE, 
+                CELL_SIZE, 
+                RED
+            );
+
+            if(IsKeyPressed(KEY_ENTER)) {
+                world.flip_side = !world.flip_side;
+            }
+
+            if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+                if(world.flip_side) {
+                    world.map[RoundRow(GetRowIndex(pointer.y))][RoundCol(GetColIndex(pointer.x))].back = true;
+                } else {
+                    world.map[RoundRow(GetRowIndex(pointer.y))][RoundCol(GetColIndex(pointer.x))].front = true;
+                }
+            }
+
+            if(IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
+                if(world.flip_side) {
+                    world.map[RoundRow(GetRowIndex(pointer.y))][RoundCol(GetColIndex(pointer.x))].back = false;
+                } else {
+                    world.map[RoundRow(GetRowIndex(pointer.y))][RoundCol(GetColIndex(pointer.x))].front = false;
+                }
+            }
         }
 
         EndDrawing();
