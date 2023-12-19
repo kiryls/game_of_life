@@ -34,6 +34,9 @@ The world map uses a toroidal space (like in a Snake game, if you go beyond the 
 - [x] Enter key moves to the next state during a pause
 - [x] variant: probabilistic rules
 - [x] draw w/ mouse during pause
+- [ ] centralize all config params into one module
+- [ ] optimize drawing/erasing feature
+- [ ] general cleanup
 
 ## List of Parameters
 in `./src/game_of_life.c`:
